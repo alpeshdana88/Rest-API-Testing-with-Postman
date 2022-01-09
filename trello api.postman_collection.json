@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "87b31067-e5df-43f2-9626-e8b0a498a06f",
+		"name": "trello api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create a board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "key",
+						"value": "1a37f3219aa780e7331acd0428c452df",
+						"type": "string"
+					},
+					{
+						"key": "token",
+						"value": "353977b00961699d912374f18fe8ac717e90fa4fecf3fbe76b05f98865c6411a",
+						"type": "string"
+					}
+				],
+				"url": {
+					"raw": "https://{{source_URL}}/1/boards/?name=postmanapitesting&key={{key}}&token={{token}}",
+					"protocol": "https",
+					"host": [
+						"{{source_URL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "postmanapitesting"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a board",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{source_URL}}/1/boards/?key={{key}}&token={{token}}&name=apitest",
+					"protocol": "https",
+					"host": [
+						"{{source_URL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "apitest"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a label",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"restAPITestingwithPostman\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{source_URL}}/1/boards/{{BoardId}}/labels?name=restAPITestingwithPostman&color=blue&key={{key}}&token={{token}}",
+					"protocol": "https",
+					"host": [
+						"{{source_URL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{BoardId}}",
+						"labels"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "restAPITestingwithPostman"
+						},
+						{
+							"key": "color",
+							"value": "blue"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "emailkeycreate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bottom\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{source_URL}}/1/boards/{{BoardId}}/emailKey/generate?key={{key}}&token={{token}}",
+					"protocol": "https",
+					"host": [
+						"{{source_URL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{BoardId}}",
+						"emailKey",
+						"generate"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add member to a board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://{{source_URL}}/1/boards/{{BoardId}}/members/shivanagoud?type=admin&key={{key}}&token={{token}}",
+					"protocol": "https",
+					"host": [
+						"{{source_URL}}"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{BoardId}}",
+						"members",
+						"shivanagoud"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "admin"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
